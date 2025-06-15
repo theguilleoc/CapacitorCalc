@@ -263,56 +263,69 @@ input::placeholder {
 }
             
 </style>
+
+
+
 """, unsafe_allow_html=True)
 st.markdown("""
 <style>
-  /* --- Móvil (<768px): contenedor full-width y padding reducido --- */
-  @media (max-width: 767px) {
-    [data-testid="stAppViewContainer"],
-    [data-testid="stMainContainer"] {
-      width: 100% !important;
-      margin: 0 !important;
-      padding: 8px !important;
+    /* --- Móvil (<768px): contenedor full-width y padding reducido --- */
+    @media (max-width: 767px) {
+        [data-testid="stAppViewContainer"],
+        [data-testid="stMainContainer"] {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 8px !important;
+        }
+        /* Hace que las tabs se apilen y ocupen 100% */
+        .stTabs [role="tablist"] {
+            flex-direction: column !important;
+            align-items: stretch !important;
+        }
+        .stTabs [role="tablist"] button[role="tab"] {
+            width: 100% !important;
+            margin-bottom: 8px !important;
+        }
+        /* Tablas responsivas: scroll horizontal suave */
+        .stDataFrame {
+            display: block !important;
+            width: 100% !important;
+            overflow-x: auto !important;
+        }
+        /* Título responsivo */
+        h1 {
+            font-size: 32px !important; /* Tamaño reducido para pantallas pequeñas */
+            margin-top: 20px !important;
+        }
     }
-    /* Hace que las tabs se apilen y ocupen 100% */
-    .stTabs [role="tablist"] {
-      flex-direction: column !important;
-      align-items: stretch !important;
-    }
-    .stTabs [role="tablist"] button[role="tab"] {
-      width: 100% !important;
-      margin-bottom: 8px !important;
-    }
-    /* Tablas responsivas: scroll horizontal suave */
-    .stDataFrame {
-      display: block !important;
-      width: 100% !important;
-      overflow-x: auto !important;
-    }
-  }
 
-  /* ——— Desktop / Tablet (>768px): mantén tu wide layout actual ——— */
-  @media (min-width: 768px) {
-    [data-testid="stAppViewContainer"],
-    [data-testid="stMainContainer"] {
-      width: 100% !important;     /* o usa max-width si prefieres centrar */
-      padding: 20px !important;   /* tu padding normal */
+    /* ——— Desktop / Tablet (>768px): mantén tu wide layout actual ——— */
+    @media (min-width: 768px) {
+        [data-testid="stAppViewContainer"],
+        [data-testid="stMainContainer"] {
+            width: 100% !important;     /* o usa max-width si prefieres centrar */
+            padding: 20px !important;   /* tu padding normal */
+        }
+        /* Tabs en fila como ahora */
+        .stTabs [role="tablist"] {
+            flex-direction: row !important;
+            justify-content: center !important;
+        }
+        /* Título en tamaño completo */
+        h1 {
+            font-size: 56px !important; /* Tamaño aumentado para pantallas grandes */
+            margin-top: 30px !important;
+        }
     }
-    /* Tabs en fila como ahora */
-    .stTabs [role="tablist"] {
-      flex-direction: row !important;
-      justify-content: center !important;
-    }
-  }
 </style>
 """, unsafe_allow_html=True)
 
 # ------------------------------------------------
-# CONTENIDO CON DISEÑO  MEJORADO
+# CONTENIDO CON DISEÑO MEJORADO
 # ------------------------------------------------
 st.markdown("<div class='main-container'>", unsafe_allow_html=True)
 
-# Encabezado premium con tamaño aumentado
+# Encabezado premium con tamaño responsivo
 st.markdown("<h1>COMPENSACIÓN ENERGÉTICA</h1>", unsafe_allow_html=True)
 st.markdown("<p style='font-size:32px; text-align:center; margin-bottom:50px;'>La herramienta definitiva para análisis avanzado de facturas eléctricas</p>", unsafe_allow_html=True)
 
