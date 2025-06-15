@@ -1,0 +1,7 @@
+
+[theme]
+base="dark"
+primaryColor="#ffd34b"
+[server]
+headless = true
+fileWatcherType = "none"
